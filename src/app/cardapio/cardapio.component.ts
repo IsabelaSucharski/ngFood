@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cardapio, CardapioService } from '../cardapio.service';
 
 @Component({
@@ -8,7 +9,10 @@ import { Cardapio, CardapioService } from '../cardapio.service';
   styleUrls: ['./cardapio.component.sass'],
 })
 export class CardapioComponent implements OnInit {
-  constructor(private cardapioService: CardapioService) {}
+  constructor(
+    private cardapioService: CardapioService,
+    private router: Router
+  ) {}
 
   cardapio: Cardapio[] = [];
   pedido: Cardapio[] = [];
@@ -19,10 +23,13 @@ export class CardapioComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCardapio();
-    this.reset();
   }
 
   getCardapio() {
+    this.pedido = this.cardapioService.pedido;
+    this.quantidade = this.cardapioService.quantidade;
+    this.total = this.cardapioService.total;
+    
     this.cardapioService.get().subscribe((cardapio) => {
       const group = cardapio.reduce(function (acumulador: any, card) {
         if (!acumulador[card.categoria]) {
@@ -40,7 +47,6 @@ export class CardapioComponent implements OnInit {
 
   addToPedido(lanche: Cardapio) {
     this.cardapioService.addToPedido(lanche);
-
     this.pedido = this.cardapioService.pedido;
     this.quantidade = this.cardapioService.quantidade;
     this.total = this.cardapioService.total;
@@ -48,5 +54,9 @@ export class CardapioComponent implements OnInit {
 
   reset() {
     this.cardapioService.resetValues();
+  }
+
+  goToPedido() {
+    this.router.navigateByUrl('/Pedido');
   }
 }

@@ -2,7 +2,8 @@
   <span>Cardápio</span>
   <div class="optionsPedido">
     <mat-icon matBadge="{{ quantidade }}" matBadgeColor="warn">home</mat-icon>
-    <a routerLink="/Pedido" routerLinkActive="active">Pedido</a>
+    <a routerLink="/Pedido" routerLinkActive="active"></a>
+    <button mat-button (click)="goToPedido()">Pedido</button>
     <span>R$ {{ total | number: "1.2-2" }}</span>
   </div>
 </mat-toolbar>

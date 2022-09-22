@@ -1,4 +1,28 @@
 <mat-toolbar color="primary">
   <span>Pedido</span>
 </mat-toolbar>
-<a routerLink="/Cardapio" routerLinkActive="active">Voltar</a>
+
+<div class="pedido">
+  <div *ngIf="pedido.length > 0; else itemNone">
+    <mat-list role="list">
+      <mat-list-item *ngFor="let p of pedido; let i = index" role="listitem"
+        ><div mat-line>
+          <span>
+            {{ p.descricao }}
+          </span>
+          <span class="dois"> R$ {{ p.preco | number: "1.2-2" }} </span>
+        </div>
+      </mat-list-item>
+    </mat-list>
+    <div class="total">
+      <span>Total: {{ total | number: "1.2-2" }}</span>
+    </div>
+  </div>
+  <ng-template #itemNone>Nenhum item adicionado ao pedido</ng-template>
+
+  <div class="buttons">
+    <button mat-stroked-button routerLink="/Cardapio">Incluir no pedido</button>
+    <button mat-stroked-button (click)="resetValues()">Limpar</button>
+    <button mat-stroked-button (click)="concluirPedido()">Concluir</button>
+  </div>
+</div>
