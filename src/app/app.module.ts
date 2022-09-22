@@ -9,19 +9,24 @@ import { PedidoComponent } from './pedido/pedido.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatIconModule } from '@angular/material/icon';
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    CardapioComponent,
-    PedidoComponent
-  ],
+  declarations: [AppComponent, CardapioComponent, PedidoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatListModule,
+    MatBadgeModule,
+    MatIconModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

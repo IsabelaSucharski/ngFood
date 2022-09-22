@@ -1,1 +1,41 @@
-/*# sourceMappingURL=cardapio.component.css.map */
+.mat-list {
+  width: 100%;
+  display: block;
+  justify-content: space-between;
+}
+
+.mat-line {
+  width: 100%;
+}
+
+.dois {
+  color: red;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+  position: fixed;
+}
+
+.optionsPedido {
+  display: inline-flex;
+  width: 20%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.mat-selection-list {
+  padding-top: 80px;
+  position: relative;
+}
+
+.mat-subheader {
+  background-color: #9fa3b9;
+}/*# sourceMappingURL=cardapio.component.css.map */

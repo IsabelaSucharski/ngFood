@@ -1,13 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-
-export interface Cardapio {
-  categoria: string;
-  descricao: string;
-  preco: number;
-}
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

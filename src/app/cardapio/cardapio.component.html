@@ -1,2 +1,26 @@
-<p>cardapio works!</p>
-<a routerLink="/Pedido" routerLinkActive="active">Pedido</a>
+<mat-toolbar color="primary">
+  <span>Cardápio</span>
+  <div class="optionsPedido">
+    <mat-icon matBadge="{{ quantidade }}" matBadgeColor="warn">home</mat-icon>
+    <a routerLink="/Pedido" routerLinkActive="active">Pedido</a>
+    <span>R$ {{ total | number: "1.2-2" }}</span>
+  </div>
+</mat-toolbar>
+
+<mat-selection-list #pedido [multiple]="false">
+  <mat-list *ngFor="let c of card; let i = index">
+    <div mat-subheader>{{ c[0] }}</div>
+    <mat-list-option
+      *ngFor="let lanche of c[1]"
+      [value]="lanche"
+      (click)="addToPedido(lanche)"
+    >
+      <div mat-line>
+        <span>
+          {{ lanche.descricao }}
+        </span>
+        <span class="dois"> R$ {{ lanche.preco | number: "1.2-2" }} </span>
+      </div>
+    </mat-list-option>
+  </mat-list>
+</mat-selection-list>
